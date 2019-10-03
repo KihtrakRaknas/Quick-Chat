@@ -138,6 +138,6 @@ let otherMessage = (message,name)=>{
 
   window.scrollTo(0,document.body.scrollHeight);
 
-  if(notificationStatus == "granted")
+  if(notificationStatus == "granted" && document.visibilityState != "visible")
     new Notification("New Message from "+name, { body: message});
 }
