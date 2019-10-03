@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Quick Chat</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      <div id="chat">
+
+      </div>  
+
+      <div style="visibility: hidden; width:100%; padding-right:5px;padding-left:5px;" class="text-center">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Message" aria-label="message" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-success" type="button">Send</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div style="position: fixed; bottom: 0px; width:100%; padding-right:5px;padding-left:5px;" class="text-center">
+      <div class="input-group mb-3">
+        <input id="msgBox" type="text" class="form-control" placeholder="Message" aria-label="message" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button id="send" class="btn btn-outline-success" type="button">Send</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="usernameModal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">Enter a username:</h5>
+          </div>
+          <div class="modal-body">
+            <input class="form-control" id="username" placeholder="Username" >
+          </div>
+          <div class="modal-footer">
+            <button id="usernameContinue" type="button" class="btn btn-success">Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDFRl9i8HKOvSLvetFbP7wv6K2k7OqnEyY",
+      authDomain: "quick-hat.firebaseapp.com",
+      databaseURL: "https://quick-hat.firebaseio.com",
+      projectId: "quick-hat",
+      storageBucket: "",
+      messagingSenderId: "716504678672",
+      appId: "1:716504678672:web:a25259fa1b058c4c842595"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+<script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-database.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
