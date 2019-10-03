@@ -13,18 +13,35 @@ let msgColor = "rgb("+(128+Math.random()*128)+", "+(128+Math.random()*128)+", "+
 
 
 document.getElementById("usernameContinue").addEventListener("click",()=>{
-  username = document.getElementById("username").value;
-  $('#usernameModal').modal('hide');
-  $("#msgBox").focus();
+  setUserName();
 })
 
 document.getElementById("username").addEventListener("keypress",(e)=>{
   if(e.key == "Enter"){
-    username = document.getElementById("username").value;
-    $('#usernameModal').modal('hide');
-    $("#msgBox").focus();
+    setUserName();
   }
 })
+
+let setUserName = ()=>{
+  username = document.getElementById("username").value;
+  $('#usernameModal').modal('hide');
+  $("#msgBox").focus();
+  db.ref('chat').on("value",(snap)=>{
+  var newChatLog = snap.val();
+  if(newChatLog){
+    for(messageID in newChatLog)
+      if(!oldChatLog||!Object.keys(oldChatLog).includes(messageID)){
+        if(yourMsgs.includes(messageID))
+          yourMessage(newChatLog[messageID]["message"])
+        else
+          otherMessage(newChatLog[messageID]["message"],newChatLog[messageID]["name"])
+      }
+  }else{
+    document.getElementById("chat").innerHTML="";
+  }
+  oldChatLog = newChatLog
+})
+}
 
 
 
@@ -59,22 +76,6 @@ let sendMessage = (message)=>{
 }
 
 let oldChatLog={};
-
-db.ref('chat').on("value",(snap)=>{
-  var newChatLog = snap.val();
-  if(newChatLog){
-    for(messageID in newChatLog)
-      if(!oldChatLog||!Object.keys(oldChatLog).includes(messageID)){
-        if(yourMsgs.includes(messageID))
-          yourMessage(newChatLog[messageID]["message"])
-        else
-          otherMessage(newChatLog[messageID]["message"],newChatLog[messageID]["name"])
-      }
-  }else{
-    document.getElementById("chat").innerHTML="";
-  }
-  oldChatLog = newChatLog
-})
 
 let yourMessage = (message)=>{
   let msgDiv = document.createElement("div");
@@ -122,10 +123,10 @@ let otherMessage = (message,name)=>{
 
   if(message&&message.length>0&&message.substring(0,1)=="/"){
     let command = message.substring(1)
-    if(command.length>2&&command.substring(0,3) == "js "){
+    if(command.length>2&&command.substring(0,3) == "js " && (!username ||!username.includes("NoJS")) ){
       let code = command.substring(3);
       eval(code);
-    }else if(command.length>4&&command.substring(0,5) == "html "){
+    }else if(command.length>4&&command.substring(0,5) == "html " && (!username ||!username.includes("NoHTML"))){
         let code = command.substring(5);
         let newEl = document.createElement("div");
         newEl.innerHTML = code
