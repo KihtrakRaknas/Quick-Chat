@@ -85,6 +85,7 @@ let yourMessage = (message)=>{
   let msgText = document.createElement("p")
   msgText.innerText = message
   msgText.style.marginBottom = "5px";
+  msgText.style.wordBreak="break-all";
   msgDiv.appendChild(msgText)
 
   if(message&&message.length>0&&message.substring(0,1)=="/"){
@@ -113,10 +114,12 @@ let otherMessage = (message,name)=>{
 
   let userText = document.createElement("small");
   userText.innerText = name;
+  userText.style.wordBreak="break-all";
 
   let msgText = document.createElement("p");
   msgText.innerText = message;
   msgText.style.marginBottom = "5px";
+  msgText.style.wordBreak="break-all";
 
   msgDiv.appendChild(userText)
   msgDiv.appendChild(msgText)

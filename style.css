@@ -6,10 +6,6 @@
   margin-bottom: 5px
 }
 
-.p{
-  word-break:break-all;
-}
-
 .me{
   /*text-align: right;*/
   justify-content: flex-end
