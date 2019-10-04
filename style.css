@@ -1,5 +1,4 @@
 .message{
-  //background-color:grey;
   border-radius:5px;
   width:80%;
   padding-right:5px;
@@ -7,6 +6,9 @@
   margin-bottom: 5px
 }
 
+.p{
+  word-break:break-all;
+}
 
 .me{
   /*text-align: right;*/
