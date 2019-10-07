@@ -10,7 +10,7 @@ Notification.requestPermission().then(function(result) {
 let username;
 
 let msgColor = "rgb("+(128+Math.random()*128)+", "+(128+Math.random()*128)+", "+(128+Math.random()*128)+")"
-
+let unseenMsgs = 0;
 
 document.getElementById("usernameContinue").addEventListener("click",()=>{
   setUserName();
@@ -141,6 +141,17 @@ let otherMessage = (message,name)=>{
 
   window.scrollTo(0,document.body.scrollHeight);
 
-  if(notificationStatus == "granted" && document.visibilityState != "visible")
+  if(notificationStatus == "granted" && document.visibilityState != "visible"){
     new Notification("New Message from "+name, { body: message});
+    let titleText = "msg from "+name;
+    unseenMsgs++;
+    if(unseenMsgs>1)
+      "("+unseenMsgs+") - "+titleText
+    document.title = titleText;
+  }
 }
+
+window.onfocus = function () { 
+  unseenMsgs = 0;
+  document.title = "Quick Chat";
+}; 
