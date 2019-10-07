@@ -146,7 +146,7 @@ let otherMessage = (message,name)=>{
     let titleText = "msg from "+name;
     unseenMsgs++;
     if(unseenMsgs>1)
-      "("+unseenMsgs+") - "+titleText
+      titleText = "("+unseenMsgs+") - "+titleText
     document.title = titleText;
   }
 }
