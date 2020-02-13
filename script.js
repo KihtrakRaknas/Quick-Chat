@@ -3,9 +3,11 @@ $('#usernameModal').modal('show')
 $("#username").focus();
 
 let notificationStatus;
-Notification.requestPermission().then(function(result) {
-  notificationStatus = result;
-});
+if ("Notification" in window) {
+  Notification.requestPermission().then(function(result) {
+    notificationStatus = result;
+  });
+}
 
 let username;
 
