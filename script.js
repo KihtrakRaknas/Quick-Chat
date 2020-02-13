@@ -4,7 +4,7 @@ $("#username").focus();
 
 let notificationStatus;
 if ("Notification" in window) {
-  Notification.requestPermission().then(function(result) {
+  Notification.requestPermission(function(result) {
     notificationStatus = result;
   });
 }
